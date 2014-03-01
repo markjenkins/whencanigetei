@@ -1,0 +1,59 @@
+Province / Territory,Economic Region Code,Economic Region Name,Unemployment Rate,Number of Insured Hours Required to Qualify for Regular Benefits,Minimum Number of Weeks Payable for Regular Benefits,Maximum Number of Weeks Payable for Regular Benefits
+Newfoundland and Labrador,1,St. John's (map),5.6,700,14,36
+Newfoundland and Labrador,2,Newfoundland / Labrador (map),16,420,30,45
+Prince Edward Island,3,Prince Edward Island (map),12,490,23,45
+Nova Scotia,4,Eastern Nova Scotia (map),14.3,420,28,45
+Nova Scotia,5,Western Nova Scotia (map),10.2,525,21,45
+Nova Scotia,6,Halifax (map),6.8,665,15,38
+New Brunswick,7,Fredericton+AC0-Moncton+AC0-Saint John (map),6.7,665,15,38
+New Brunswick,8,Madawaska+AC0-Charlotte (map),11.9,490,23,45
+New Brunswick,9,Restigouche+AC0-Albert (map),16.5,420,32,45
+Quebec,10,Gasp+AOk-sie+AC0Azg-les+AC0-de+AC0-la+AC0-Madeleine (map),17,420,32,45
+Quebec,11,Quebec (map),4.6,700,14,36
+Quebec,12,Trois+AC0-Rivi+AOg-res (map),8.7,595,18,42
+Quebec,13,South Central Quebec (map),4.8,700,14,36
+Quebec,14,Sherbrooke (map),6.6,665,15,38
+Quebec,15,Mont+AOk-r+AOk-gie (map),7.2,630,17,40
+Quebec,16,Montreal (map),8.1,595,18,42
+Quebec,17,Central Quebec (map),8,630,17,40
+Quebec,18,North Western Quebec (map),8.8,595,18,42
+Quebec,19,Lower Saint Lawrence and North Shore (map),10,560,20,44
+Quebec,20,Hull (map),6.7,665,15,38
+Quebec,21,Chicoutimi+AC0-Jonqui+AOg-re (map),7.5,630,17,40
+Ontario,22,Ottawa (map),6.3,665,15,38
+Ontario,23,Eastern Ontario (map),7,665,15,38
+Ontario,24,Kingston (map),6.5,665,15,38
+Ontario,25,Central Ontario (map),7.9,630,17,40
+Ontario,26,Oshawa (map),7.3,630,17,40
+Ontario,27,Toronto (map),8.3,595,18,42
+Ontario,28,Hamilton (map),6,700,14,36
+Ontario,29,St. Catharines (map),8.6,595,18,42
+Ontario,30,London (map),8,630,17,40
+Ontario,31,Niagara (map),8.4,595,18,42
+Ontario,32,Windsor (map),6.7,665,15,38
+Ontario,33,Kitchener (map),6.6,665,15,38
+Ontario,34,Huron (map),7.6,630,17,40
+Ontario,35,South Central Ontario (map),5.9,700,14,36
+Ontario,36,Sudbury (map),6.8,665,15,38
+Ontario,37,Thunder Bay (map),5.9,700,14,36
+Ontario,38,Northern Ontario (map),12.9,455,24,45
+Manitoba,39,Winnipeg (map),5.9,700,14,36
+Manitoba,40,Southern Manitoba (map),6,700,14,36
+Manitoba,41,Northern Manitoba (map),32,420,32,45
+Saskatchewan,42,Regina (map),4.2,700,14,36
+Saskatchewan,43,Saskatoon (map),4.3,700,14,36
+Saskatchewan,44,Southern Saskatchewan (map),6.1,665,15,38
+Saskatchewan,45,Northern Saskatchewan (map),16.9,420,32,45
+Alberta,46,Calgary (map),4.8,700,14,36
+Alberta,47,Edmonton (map),5.6,700,14,36
+Alberta,48,Northern Alberta (map),8.2,595,18,42
+Alberta,49,Southern Alberta (map),5.2,700,14,36
+British Columbia,50,Southern Interior British Columbia (map),8.9,595,18,42
+British Columbia,51,Abbotsford (map),8.2,595,18,42
+British Columbia,52,Vancouver (map),6.5,665,15,38
+British Columbia,53,Victoria (map),5.7,700,14,36
+British Columbia,54,Southern Coastal British Columbia (map),9.2,560,20,44
+British Columbia,55,Northern British Columbia (map),11.1,490,23,45
+Yukon,56,Yukon (map),25,420,35,45
+Northwest Territories,57,Northwest Territories (map),25,420,35,45
+Nunavut,58,Nunavut (map),25,420,35,45
