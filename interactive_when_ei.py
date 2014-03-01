@@ -46,7 +46,14 @@ def main():
         EI_Economic_Place.objects.filter(province=province)
         )
 
-    place_choice = -1
+    # use a sentinal value that will fail the test below if there are multiple
+    # places within the province to choose from, otherwise, there's only one
+    # choice choose it
+    place_choice = (-1 if len(places_cache) > 1
+                     else tuple(places_cache.keys())[0]
+                     ) # end ternary expression
+
+    # until a place is picked, ask for one
     while place_choice not in places_cache:
         print_places(places_cache)
         try:
