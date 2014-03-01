@@ -76,8 +76,8 @@ def main():
         # second pass we load the Rate_For_Place_And_Time
         Rate_For_Place_And_Time.objects.bulk_create(
             Rate_For_Place_And_Time(
-                economic_place=EI_Economic_Place.objects.filter(
-                    code=d['economic_region_code'])[0],
+                economic_place=EI_Economic_Place.objects.get(
+                    code=d['economic_region_code']),
                 start_date=start_date,
                 end_date=end_date,
                 unemployment_rate=Decimal(d['unemp_rate']),
