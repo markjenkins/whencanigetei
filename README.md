@@ -36,13 +36,41 @@ create your database
 
 $ django-admin syncdb
 
+load the CSV file
+
+python load_unemployement_rates.py unemployement_rates_feb9_march8_2014.csv 2014-2-9 2014-3-8
+
+Now we can interactivly look stuff up:
+
+python interactive_when_ei.py
+
+```
+AB: Alberta
+BC: British Columbia
+YT: Yukon
+ON: Ontario
+NL: Newfoundland and Labrador
+MB: Manitoba
+NB: New Brunswick
+SK: Saskatchewan
+QC: Quebec
+PE: Prince Edward Island
+NS: Nova Scotia
+NT: Northwest Territories
+NU: Nunavut
+When province are you from? > MB
+
+39: Winnipeg
+40: Southern Manitoba
+41: Northern Manitoba
+And where exactly? > 41
+
+you need 420 hours in Northern Manitoba with it's 32% unemployment rate
+```
+
 check out the SQL schema this has created
 
 $ django-admin sqlall
-
-load the CSV file
-
-./load_unemployement_rates.py unemployement_rates_feb9_march8_2014.csv 2014-2-9 2014-3-8
 
 Look at the pretty data dump
 
