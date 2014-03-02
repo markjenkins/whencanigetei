@@ -31,9 +31,7 @@ from whenei.models import (
     EI_Economic_Place, Rate_For_Place_And_Time,
     )
 from whenei.provinces import PROVINCES_AND_TERITORIES_NAME_TO_ABREV
-
-def convert_date_string(date_str):
-    return datetime.strptime(date_str, "%Y-%m-%d").date()
+from whenei.util import convert_date_string
 
 def strip_suffix_if_present(place_name, suffix_to_strip):
     return (place_name if not place_name.endswith(suffix_to_strip)
