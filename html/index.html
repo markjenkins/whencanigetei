@@ -64,6 +64,12 @@ jquery http://jquery.org its own terms http://jquery.org/license
        )
       return false;
    }
+
+   function showRegionAndDisplayResults(regionStr, regionCode){
+       showRegion(regionStr);
+       displayResults(regionCode);
+       return false;
+   }
    </script>
 		
 			<!-- Start content -->
@@ -80,11 +86,11 @@ jquery http://jquery.org its own terms http://jquery.org/license
 				<!-- Map of Canada -->
 				<map name="FrontPageMap0" id="FrontPageMap0">
 					<area shape="poly" coords="46,139,56,152,50,172,56,178,56,227,63,243,69,249,71,254,1,221"
-						href="#" onclick="showRegion('yukon'); displayResults(56);" alt="Yukon" title="Yukon" />
+						href="#" onclick="showRegionAndDisplayResults('yukon', 56);" alt="Yukon" title="Yukon" />
 					<area shape="poly" coords="59,152,62,148,99,144,115,115,129,94,168,72,170,76,154,174,127,169,114,170,108,187,134,219,143,220,148,226,177,236,174,274,138,269,92,259,74,255,73,246,65,243,59,227,56,197,60,187,56,175,51,171"
-						href="#" onclick="showRegion('nwterr');" alt="Northwest Territories" title="Northwest Territories" />
+						href="#" onclick="showRegionAndDisplayResults('nwterr', 57);" alt="Northwest Territories" title="Northwest Territories" />
 					<area shape="poly" coords="172,73,209,37,236,13,271,11,258,63,254,125,338,183,345,242,301,238,283,243,278,255,259,255,234,239,212,275,177,273,180,234,150,224,143,216,135,215,120,195,111,185,116,170,127,171,156,173"
-						href="#" onclick="showRegion('nunavut');" alt="Nunavut" title="Nunavut"/>
+						href="#" onclick="showRegionAndDisplayResults('nunavut', 58);" alt="Nunavut" title="Nunavut"/>
 					<area shape="poly" coords="7,290,11,312,36,360,54,360,96,368,92,354,71,318,88,260,8,226,11,245,9,277"
 						href="#" onclick="showRegion('bc');" alt="British Columbia" title="British Columbia" />
 					<area shape="poly" coords="92,263,77,318,95,351,99,367,119,371,134,274,103,266" 
@@ -120,9 +126,9 @@ jquery http://jquery.org its own terms http://jquery.org/license
             <li><a href="#" onclick="showRegion('sask');">Saskatchewan</a></li>
             <li><a href="#" onclick="showRegion('alb');">Alberta</a></li>
             <li><a href="#" onclick="showRegion('bc');">British Columbia</a></li>
-            <li><a href="#" onclick="showRegion('yukon'); displayResults(56);">Yukon</a></li>
-            <li><a href="#" onclick="showRegion('nwterr');">Northwest Territories</a></li>
-            <li> <a href="#" onclick="showRegion('nunavut');">Nunavut</a></li>
+            <li><a href="#" onclick="showRegionAndDisplayResults('yukon', 56);">Yukon</a></li>
+            <li><a href="#" onclick="showRegionAndDisplayResults('nwterr', 57);">Northwest Territories</a></li>
+            <li> <a href="#" onclick="showRegionAndDisplayResults('nunavut', 58);">Nunavut</a></li>
             </ul>
             </div>   <!-- Canada -->
       
