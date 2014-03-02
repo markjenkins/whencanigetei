@@ -3,6 +3,22 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
+<!--
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+http://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html
+@author Sara Arenson <sara_arenson@yahoo.ca>
+@author Mark Jenkins <mark@markjenkins.ca>
+
+image maps and map images are under crown copyright and have
+been lifted from 
+http://srv129.services.gc.ca/eiregions/eng/canada.aspx
+
+jquery http://jquery.org its own terms http://jquery.org/license
+
+-->
    <title>When Can I Get EI?</title>
    </head>
 
@@ -33,16 +49,19 @@
    
    function displayResults(regionCode) {
       var hoursWorked = $("#hoursWorked").val();
-      $.ajax({
-         type: "GET",
-         url: "http://request.when-ei.ca",
-         data: { 'regionCode': regionCode, 'hoursWorked': hoursWorked },
-         dataType: "json", 
-         success: function(json) {
-            $("#results").html("<p>In " + json['regionName'] + ", you have to work " + json['hours'] + " hours.</p>");
-            $("#results").show();
-         }
-      })
+      $.getJSON(
+      "http://request.when-ei.ca/",
+      //"http://request-dev.when-ei.ca/",
+      { 'regionCode': regionCode, 'hoursWorked': hoursWorked },
+      function(json) {
+           $("#results").html(
+               "<p>In " + json.regionName +
+               ", you have to work " + json.hours + " hours. " +
+               json.hoursToGo + " hours to go</p>"
+           );
+           $("#results").show();
+       }
+       )
       return false;
    }
    </script>
@@ -51,7 +70,7 @@
 			<div class="center">
          
             <form>
-               Hours worked:<input id="hoursWorked" type="text" />
+               Hours worked:<input id="hoursWorked" type="text" value="0"/>
             </form>
          
             <div id="canada">
