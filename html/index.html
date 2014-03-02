@@ -106,7 +106,7 @@ jquery http://jquery.org its own terms http://jquery.org/license
 					<area shape="poly" coords="372,369,378,384,386,390,391,378,400,369,391,363,392,351,385,359,378,359,369,360,368,365"
 						href="#" onclick="showRegion('nb');" alt="New Brunswick" title="New Brunswick"/>
 					<area shape="poly" coords="407,359,393,359,398,367,406,364" 
-						href="#" onclick="showRegion('pei');" alt="Prince Edward Island" title="Prince Edward Island" />
+						href="#" onclick="showRegionAndDisplayResults('pei', 3);" alt="Prince Edward Island" title="Prince Edward Island" />
 					<area shape="poly" coords="427,360,416,350,412,366,404,368,395,377,391,390,399,395,409,382,421,368"
 						href="#" onclick="showRegion('ns');" alt="Nova Scotia" title="Nova Scotia" />
 					<area shape="poly" coords="352,247,373,293,354,299,356,312,375,326,377,308,382,317,413,302,420,315,418,343,441,339,458,335,457,322,440,313,430,305,418,288,399,280,386,280,372,263,361,254,358,252"
@@ -117,7 +117,7 @@ jquery http://jquery.org its own terms http://jquery.org/license
             <ul class="list">
             
             <li><a href="#" onclick="showRegion('nfld');">Newfoundland and Labrador</a></li>
-            <li><a href="#" onclick="showRegion('pei');">Prince Edward Island</a></li>
+            <li><a href="#" onclick="showRegionAndDisplayResults('pei', 3);">Prince Edward Island</a></li>
             <li><a href="#" onclick="showRegion('ns');">Nova Scotia</a></li>
             <li><a href="#" onclick="showRegion('nb');">New Brunswick</a></li>
             <li><a href="#" onclick="showRegion('queb');">Quebec</a></li>
@@ -450,17 +450,17 @@ jquery http://jquery.org its own terms http://jquery.org/license
             
             <div id="nfld" class="provTerr" hidden>
      			<map name="NFLDMap0" id="NFLDMap0">
-					<area shape="poly" coords="309,376,305,375,300,386,306,391,308,384" href="stjohns.aspx" alt="St. John's">
-					<area shape="poly" coords="122,38,110,42,115,84,123,123,121,158,128,188,80,171,67,190,62,214,80,252,117,277,133,266,236,265,233,299,201,358,200,383,244,387,255,402,288,405,303,406,307,395,295,387,301,369,300,352,290,322,256,310,275,272,263,243,258,216,218,180,178,152,166,101,129,49" href="nfldlab.aspx" alt="Newfoundland / Labrador">
+					<area shape="poly" coords="309,376,305,375,300,386,306,391,308,384" href="#" onclick="displayResults(1);" alt="St. John's">
+					<area shape="poly" coords="122,38,110,42,115,84,123,123,121,158,128,188,80,171,67,190,62,214,80,252,117,277,133,266,236,265,233,299,201,358,200,383,244,387,255,402,288,405,303,406,307,395,295,387,301,369,300,352,290,322,256,310,275,272,263,243,258,216,218,180,178,152,166,101,129,49" href="#" onclick="displayResults(2);" alt="Newfoundland / Labrador">
 				</map>
-				<img src="regions/nfld.gif" usemap="#FrontPageMap0" alt="Map: EI Economic Regions of Newfoundland and Labrador (See full description below image)" class="noborder"><br>
+				<img src="regions/nfld.gif" usemap="#NFLDMap0" alt="Map: EI Economic Regions of Newfoundland and Labrador (See full description below image)" class="noborder"><br>
             A map of Newfoundland and Labrador showing the EI regional boundaries and selected place names including
             Burgeo, Corner Brook, Happy Valley-Goose Bay, Springdale, St. Anthony and St. John's.
             <ul class="list">
-               <li><img src="../images/nfldco1.gif" alt="" height="13" width="12">
-                  <a href="stjohns.aspx">01 St. John's</a></li>
-               <li><img src="../images/nfldco2.gif" alt="" height="13" width="12">
-                  <a href="nfldlab.aspx">02 Newfoundland / Labrador</a></li>
+               <li>
+                  <a href="#" onclick="displayResults(1);">01 St. John's</a></li>
+               <li>
+                  <a href="#" onclick="displayResults(2);">02 Newfoundland / Labrador</a></li>
                <li>
                   <a href="#" onclick="hideRegion('nfld'); return false;">Canada</a></li>
             </ul>
