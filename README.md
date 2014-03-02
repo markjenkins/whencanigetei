@@ -21,7 +21,7 @@ which I have copy-pasted to unemployement_rates_feb9_march8_2014.csv
 The initial versions of this application will be based on that. Time permitting, I may also add a time-travel feature so that the data from data.gc.ca can have a purpose.
 
 You can see a copy of this up and running at:
-http://
+http://www.when-ei.ca
 
 -----------
 So, how do you use this?
