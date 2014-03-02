@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+   <title>When Can I Get EI?</title>
+   </head>
+
+   <body onload="hideAllRegions();">
+   
+   <!-- INCLUDE JQUERY -->
+   <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+   
+   <!-- SCRIPT TO SHOW AND HIDE PROVINCES/TERRITORIES AND SEND AJAX REQUESTS -->
+   <script type="text/javascript">
+   
+   function showRegion(regionStr) {
+      $("#" + regionStr).show();
+      $("#canada").hide();
+      return false;
+   }
+   
+   function hideRegion(toHide) {
+      $("#canada").show();
+      $("#" + toHide).hide();
+      $("#results").hide();
+      return false;
+   }
+   
+   function hideAllRegions() {
+      $(".provTerr").hide();      
+   }
+   
+   function displayResults(regionCode) {
+      var hoursWorked = $("#hoursWorked").val();
+      $.ajax({
+         type: "GET",
+         url: "http://request.when-ei.ca",
+         data: { 'regionCode': regionCode, 'hoursWorked': hoursWorked },
+         dataType: "json", 
+         success: function(json) {
+            $("#results").html("<p>In " + json['regionName'] + ", you have to work " + json['hours'] + " hours.</p>");
+            $("#results").show();
+         }
+      })
+      return false;
+   }
+   </script>
+		
+			<!-- Start content -->
+			<div class="center">
+         
+            <form>
+               Hours worked:<input id="hoursWorked" type="text" />
+            </form>
+         
+            <div id="canada">
+                <h1><a name="cont" id="cont">
+                    When Can I Get EI?</a></h1>
+                <h2>Enter your hours and click on your province or territory...</h2>
+				<!-- Map of Canada -->
+				<map name="FrontPageMap0" id="FrontPageMap0">
+					<area shape="poly" coords="46,139,56,152,50,172,56,178,56,227,63,243,69,249,71,254,1,221"
+						href="#" onclick="showRegion('yukon'); displayResults(56);" alt="Yukon" title="Yukon" />
+					<area shape="poly" coords="59,152,62,148,99,144,115,115,129,94,168,72,170,76,154,174,127,169,114,170,108,187,134,219,143,220,148,226,177,236,174,274,138,269,92,259,74,255,73,246,65,243,59,227,56,197,60,187,56,175,51,171"
+						href="#" onclick="showRegion('nwterr');" alt="Northwest Territories" title="Northwest Territories" />
+					<area shape="poly" coords="172,73,209,37,236,13,271,11,258,63,254,125,338,183,345,242,301,238,283,243,278,255,259,255,234,239,212,275,177,273,180,234,150,224,143,216,135,215,120,195,111,185,116,170,127,171,156,173"
+						href="#" onclick="showRegion('nunavut');" alt="Nunavut" title="Nunavut"/>
+					<area shape="poly" coords="7,290,11,312,36,360,54,360,96,368,92,354,71,318,88,260,8,226,11,245,9,277"
+						href="#" onclick="showRegion('bc');" alt="British Columbia" title="British Columbia" />
+					<area shape="poly" coords="92,263,77,318,95,351,99,367,119,371,134,274,103,266" 
+						href="#" onclick="showRegion('alb');" alt="Alberta" title="Alberta"/>
+					<area shape="poly" coords="137,273,123,372,169,377,174,276,147,275" 
+						href="#" onclick="showRegion('sask');" alt="Saskatchewan" title="Saskatchewan"/>
+					<area shape="poly" coords="177,278,172,377,207,379,207,339,236,305,225,301,217,287,212,278,186,279"
+						href="#" onclick="showRegion('manitoba');" alt="Manitoba" title="Manitoba"/>
+					<area shape="poly" coords="210,342,210,381,238,384,271,395,298,409,287,431,294,436,317,421,333,409,340,397,329,395,309,394,300,383,294,349,281,339,277,316,255,313,241,305,221,330"
+						href="#" onclick="showRegion('ont');" alt="Ontario" title="Ontario"/>
+					<area shape="poly" coords="287,247,290,270,287,279,300,292,299,308,291,317,299,346,305,383,312,391,337,393,343,396,360,391,363,377,365,370,367,358,387,351,400,339,413,319,416,311,413,308,382,321,375,330,355,317,350,298,366,292,359,271,349,246,343,267,330,261,326,248,310,244,296,241,293,242"
+						href="#" onclick="showRegion('queb');" alt="Quebec" title="Quebec" />
+					<area shape="poly" coords="372,369,378,384,386,390,391,378,400,369,391,363,392,351,385,359,378,359,369,360,368,365"
+						href="#" onclick="showRegion('nb');" alt="New Brunswick" title="New Brunswick"/>
+					<area shape="poly" coords="407,359,393,359,398,367,406,364" 
+						href="#" onclick="showRegion('pei');" alt="Prince Edward Island" title="Prince Edward Island" />
+					<area shape="poly" coords="427,360,416,350,412,366,404,368,395,377,391,390,399,395,409,382,421,368"
+						href="#" onclick="showRegion('ns');" alt="Nova Scotia" title="Nova Scotia" />
+					<area shape="poly" coords="352,247,373,293,354,299,356,312,375,326,377,308,382,317,413,302,420,315,418,343,441,339,458,335,457,322,440,313,430,305,418,288,399,280,386,280,372,263,361,254,358,252"
+						href="#" onclick="showRegion('nfld');" alt="Newfoundland and Labrador" title="Newfoundland and Labrador" />
+				</map>
+            
+				<img src="canadaei.gif" usemap="#FrontPageMap0" alt="Map: Canada's Employment Insurance (EI) Economic Regions (2000) (See full description below image)" class="noborder" /><br />A map of Canada showing the EI regional boundaries.
+            <ul class="list">
+            
+            <li><a href="#" onclick="showRegion('nfld');">Newfoundland and Labrador</a></li>
+            <li><a href="#" onclick="showRegion('pei');">Prince Edward Island</a></li>
+            <li><a href="#" onclick="showRegion('ns');">Nova Scotia</a></li>
+            <li><a href="#" onclick="showRegion('nb');">New Brunswick</a></li>
+            <li><a href="#" onclick="showRegion('queb');">Quebec</a></li>
+            <li><a href="#" onclick="showRegion('ont');">Ontario</a></li>
+            <li><a href="#" onclick="showRegion('manitoba');">Manitoba</a></li>
+            <li><a href="#" onclick="showRegion('sask');">Saskatchewan</a></li>
+            <li><a href="#" onclick="showRegion('alb');">Alberta</a></li>
+            <li><a href="#" onclick="showRegion('bc');">British Columbia</a></li>
+            <li><a href="#" onclick="showRegion('yukon'); displayResults(56);">Yukon</a></li>
+            <li><a href="#" onclick="showRegion('nwterr');">Northwest Territories</a></li>
+            <li> <a href="#" onclick="showRegion('nunavut');">Nunavut</a></li>
+            </ul>
+            </div>   <!-- Canada -->
+      
+            <div id="yukon" class="provTerr" hidden>
+            <img src="regions/yukon.gif" alt="Map: EI Economic Region of Yukon (See full description below image)" class="noborder">
+            Economic Regions:
+            <ul class="list">
+            <li>
+            Province / Territory Yukon
+            </li>
+            <li><a href="#" onclick="hideRegion('yukon');">Canada</a></li>
+            </ul>
+            </div>   <!-- Yukon -->
+
+            <div id="nwterr" class="provTerr" hidden>
+            <img src="regions/nwterr.gif" alt="Map: EI Economic Region of the Northwest Territories (See full description below image)" class="noborder">
+            <br>
+            A map of the Northwest Territories showing the EI Regional boundary and 
+            1996 Census Divisions including Fort Smith Region, Inuvik Region,
+            Keewatin Region and Kitikmeot Region.
+    				
+            Economic Regions:
+            <ul class="list">
+            <li>
+            Province / Territory <strong>Northwest Territories</strong>
+            </li>
+            <li><a href="#" onclick="hideRegion('nwterr');">Canada</a></li>
+            </ul>
+            </div>   <!-- NW Territories -->
+            
+            <div id="nunavut" class="provTerr" hidden>
+            <img src="regions/nunavut.gif" alt="Map: EI Economic Region of Nunavut (See full description below image)" class="noborder">
+            <br>
+            A map of Nunavut showing the EI Regional boundary and 1996 Census Divisions including
+            Baffin Region, Fort Smith Region, Keewatin Region and Kitikmeot Region.
+    				
+            Economic Regions:
+            <ul class="list">
+            <li>
+            Province / Territory <strong>Nunavut</strong>
+            </li>
+            <li><a href="#" onclick="hideRegion('nunavut');">Canada</a></li>
+            </ul>
+				</div>   <!-- Nunavut -->
+
+            <div id="bc" class="provTerr" hidden>
+            <map name="BCMap0" id="BCMap0">
+					<area href="northbc.aspx" coords="243, 62, 15, 64, 30, 88, 51, 77, 76, 99, 117, 154, 112, 180, 83, 185, 99, 227, 118, 240, 138, 234, 147, 252, 136, 255, 145, 269, 156, 266, 166, 270, 168, 257, 180, 243, 191, 245, 199, 249, 215, 241, 229, 238, 236, 235, 238, 214, 256, 219, 264, 221, 251, 201, 241, 179, 245, 69" shape="poly" alt="Northern B.C.">
+					<area href="victoria.aspx" coords="207, 306, 194, 312, 201, 317, 209, 312, 209, 310" shape="poly" alt="Victoria">
+					<area href="abbt.aspx" coords="220, 300, 219, 293, 213, 290, 215, 299" shape="poly" alt="Abbotsford">
+					<area href="vancouv.aspx" coords="205, 285, 202, 291, 204, 297, 212, 296, 213, 288, 211, 285" shape="poly" alt="Vancouver">
+					<area href="soutinbc.aspx" coords="317, 295, 310, 285, 308, 262, 287, 242, 271, 223, 261, 228, 243, 219, 242, 236, 229, 242, 213, 246, 222, 252, 228, 260, 225, 268, 236, 275, 237, 287, 240, 295, 309, 295" shape="poly" alt="Southern Interior B.C.">
+					<area href="soutcoabc.aspx" coords="153, 278, 164, 292, 189, 310, 208, 301, 197, 294, 196, 290, 202, 282, 210, 280, 220, 285, 226, 297, 234, 296, 231, 278, 221, 273, 223, 261, 211, 249, 199, 256, 185, 246, 178, 254, 175, 264, 169, 274, 159, 269, 150, 272" shape="poly" alt="Southern Coastal B.C.">
+				</map>
+				<img src="regions/bc.gif" usemap="#BCMap0" alt="Map: British Columbia's EI Economic Region (See full description below image)" class="noborder"><br>
+            A map of British Columbia showing the EI regional boundaries and selected place names including
+            Abbotsford, Cranbrook, Dawson Creek, Kelowna, Nanaimo, Powell River, Prince George, Prince Rupert, 
+            Smithers, Vancouver, Victoria and Williams Lake. 
+            <ul class="list">
+               <li><img src="../images/bcco1.gif" alt="" height="13" width="12">
+               <a href="soutinbc.aspx">50 Southern Interior B.C.</a></li>
+               <li><img src="../images/bcco6.gif" alt="" height="13" width="12">
+               <a href="abbt.aspx">51 Abbotsford</a></li>
+               <li><img src="../images/bcco2.gif" alt="" height="13" width="12">
+               <a href="vancouv.aspx">52 Vancouver</a></li>
+               <li><img src="../images/bcco3.gif" alt="" height="13" width="12">
+               <a href="victoria.aspx">53 Victoria</a></li>
+               <li><img src="../images/bcco4.gif" alt="" height="13" width="12">
+               <a href="soutcoabc.aspx">54 Southern Coastal B.C.</a></li>
+               <li><img src="../images/bcco5.gif" alt="" height="13" width="12">
+               <a href="northbc.aspx">55 Northern B.C.</a></li>
+               <li>
+               <a href="#" onclick="hideRegion('bc');">Canada</a></li>
+            </ul>            
+            </div>   <!-- BC -->
+            
+            <div id="alb" class="provTerr" hidden>
+            <map name="AlbMap0" id="AlbMap0">
+					<area href="northalb.aspx" coords="72,42,252,44,252,229,235,233,208,224,183,225,176,236,140,227,145,201,134,197,124,156,76,160,73,52" shape="poly" alt="Northern Alberta">
+					<area href="edmonton.aspx" coords="159,241,162,254,177,261,197,257,204,244,203,230,186,228,180,240,165,240" shape="poly" alt="Edmonton">
+					<area href="calgary.aspx" coords="168,306,193,305,191,328,168,324,168,313" shape="poly" alt="Calgary">
+					<area href="southalb.aspx" coords="252,382,252,325,198,328,182,332,153,322,177,378,237,380" shape="poly" alt="Southern Alberta">
+					<area href="southalb.aspx" coords="252,237,210,232,203,259,183,264,161,259,155,245,155,237,134,229,140,206,129,192,121,160,73,163,69,233,87,256,117,288,148,319,164,320,163,300,198,301,196,324,251,319,252,256" shape="poly" alt="Southern Alberta">
+				</map>
+				<img src="regions/alb.gif" usemap="#AlbMap0" alt="Map: Alberta's EI Economic Regions (See full description below image)" class="noborder"><br>
+            A map of Alberta showing the EI regional boundaries and selected place names including
+            Calgary, Edmonton, Grande Prairie, Lethbridge, Lloydminster, Medicine Hat, Red Deer, 
+            Slave Lake and St. Paul.
+            <ul class="list">
+               <li><img src="../images/albco1.gif" alt="" height="13" width="12">
+                  <a href="calgary.aspx">46 Calgary</a></li>
+               <li><img src="../images/albco2.gif" alt="" height="13" width="12">
+                  <a href="edmonton.aspx">47 Edmonton</a></li>
+               <li><img src="../images/albco4.gif" alt="" height="13" width="12">
+                  <a href="northalb.aspx">48 Northern Alberta</a></li>
+               <li><img src="../images/albco3.gif" alt="" height="13" width="12">
+                  <a href="southalb.aspx">49 Southern Alberta</a></li>
+               <li>
+                  <a href="#" onclick="hideRegion('alb');">Canada</a></li>
+            </ul>
+            </div> <!-- Alberta -->
+            
+            <div id="sask" class="provTerr" hidden>
+				<map name="SaskMap0" id="SaskMap0">
+					<area shape="poly" coords="134, 317, 135, 387, 265, 381, 316, 377, 314, 332, 282, 332, 281, 339, 233, 340, 230, 352, 220, 350, 218, 360, 202, 359, 199, 350, 190, 350, 189, 326, 171, 315, 160, 309, 147, 308, 137, 311" href="soutsask.aspx" alt="Southern Saskatchewan">
+					<area shape="poly" coords="318, 452, 316, 380, 264, 386, 262, 409, 230, 409, 230, 389, 139, 389, 133, 452, 294, 451" href="soutsask.aspx" alt="Southern Saskatchewan">
+					<area shape="poly" coords="258, 405, 259, 387, 241, 386, 239, 391, 235, 392, 235, 405, 247, 405" href="regina.aspx" alt="Regina">
+					<area shape="poly" coords="204, 355, 215, 352, 216, 347, 225, 347, 227, 338, 212, 338, 211, 327, 193, 329, 193, 346, 203, 345, 204, 350" href="saskatoo.aspx" alt="Saskatoon">
+					<area shape="poly" coords="133, 50, 132, 308, 143, 303, 165, 304, 185, 321, 194, 326, 214, 323, 214, 334, 276, 335, 275, 328, 312, 328, 306, 199, 304, 48, 151, 50" href="nortsask.aspx" alt="Northern Saskatchewan">
+				</map>
+				<img src="regions/sask.gif" usemap="#SaskMap0" alt="Map: Saskatchewan's EI Economic Regions (See full description below image)" class="noborder"><br>
+            A map of Saskatchewan showing the EI regional boundaries and selected place names including
+            Estevan, La Ronge, Melfort, Moose Jaw, North Battleford, Prince Albert, Regina, Saskatoon,
+            Swift Current and Yorkton.
+            <ul class="list">
+               <li><img src="../images/sasco1.gif" alt="" height="13" width="12">
+               <a href="regina.aspx">42 Regina</a></li>
+               <li><img src="../images/sasco2.gif" alt="" height="13" width="12">
+               <a href="saskatoo.aspx">43 Saskatoon</a></li>
+               <li><img src="../images/sasco3.gif" alt="" height="13" width="12">
+               <a href="soutsask.aspx">44 Southern Saskatchewan</a></li>
+               <li><img src="../images/sasco4.gif" alt="" height="13" width="12">
+               <a href="nortsask.aspx">45 Northern Saskatchewan</a></li>
+               <li>
+               <a href="#" onclick="hideRegion('sask');">Canada</a></li>
+            </ul>
+            </div>   <!-- Saskatchewan -->
+            
+            <div id="manitoba" class="provTerr" hidden>
+				<map name="ManitobaMap0" id="ManitobaMap0">
+					<area shape="poly" coords="105, 416, 174, 415, 176, 402, 166, 402, 152, 380, 143, 378, 98, 293, 84, 291, 89, 416, 97, 415" href="#" onclick="displayResults(40);" alt="Southern Manitoba" title="Southern Manitoba">
+					<area shape="poly" coords="174, 372, 173, 379, 155, 379, 170, 399, 184, 392, 185, 383, 181, 380" href="#" onclick="displayResults(39);" alt="Winnipeg" title="Winnipeg">
+					<area shape="poly" coords="77, 60, 82, 289, 100, 289, 112, 315, 128, 337, 145, 368, 146, 374, 167, 362, 183, 364, 186, 378, 188, 402, 180, 406, 180, 415, 209, 414, 207, 295, 321, 159, 282, 145, 258, 152, 245, 97, 220, 96, 215, 59, 89, 57" href="#" onclick="displayResults(41);" alt="Northern Manitoba" title="Northern Manitoba">
+				</map>
+				<img src="regions/manitoba.gif" usemap="#ManitobaMap0" alt="Map: Manitoba's EI Economic Regions (See full description below image)" class="noborder"><br>
+            A map of Manitoba showing the EI regional boundaries and selected place names including
+            Brandon, Dauphin, Flin Flon, Morden, Steinbach, The Pas, Thompson and Winnipeg.
+            <ul class="list">
+               <li>
+                  <a href="#" onclick="displayResults(39);">39 Winnipeg</a></li>
+               <li>
+                  <a href="#" onclick="displayResults(40);">40 Southern Manitoba</a></li>
+               <li>
+                  <a href="#" onclick="displayResults(41);">41 Northern Manitoba</a></li>
+               <li><a href="#" onclick="hideRegion('manitoba');">Canada</a></li>
+            </ul>
+            </div>   <!-- Manitoba -->
+            
+            <div id="ont" class="provTerr" hidden>
+				<map name="OntMap0" id="OntMap0">
+					<area shape="poly" coords="212,389,223,377,220,372,216,374,213,364,204,368,205,377,200,399,206,392" href="huron.aspx" alt="Huron">
+					<area shape="poly" coords="243,377,249,373,250,364,242,360,234,363,237,368,232,370,229,377,237,376" href="niagara.aspx" alt="Niagara">
+					<area shape="poly" coords="214,343,214,363,225,357,233,360,229,343,223,341" href="scentont.aspx" alt="South Central Ontario">
+					<area shape="poly" coords="201,379,192,379,191,385,202,387,202,383" href="windsor.aspx" alt="Windsor">
+					<area shape="poly" coords="226,360,218,363,224,374,228,373,228,366" href="london.aspx" alt="London">
+					<area shape="poly" coords="262,368,261,357,254,359,252,368,258,368" href="stcath.aspx" alt="St. Catharines">
+					<area shape="poly" coords="235,348,230,349,235,358,238,358,236,352" href="kitchen.aspx" alt="Kitchener">
+					<area shape="poly" coords="251,358,246,356,243,353,241,353,241,358,246,361" href="hamilton.aspx" alt="Hamilton">
+					<area shape="poly" coords="241,335,239,338,241,349,250,354,258,348,256,332,252,331,250,336,245,337" href="toronto.aspx" alt="Toronto">
+					<area shape="poly" coords="268,345,268,339,260,338,260,344,264,343" href="oshawa.aspx" alt="Oshawa">
+					<area shape="poly" coords="216,308,224,324,215,336,227,339,235,336,239,332,254,327,260,328,262,336,268,334,272,342,288,344,292,330,287,320,280,312,274,304,261,304,246,313,241,326,231,318,227,312" href="centont.aspx" alt="Central Ontario">
+					<area shape="poly" coords="292,341,305,337,301,330,296,332,294,336" href="kingston.aspx" alt="Kingston">
+					<area shape="poly" coords="334,302,334,315,307,333,300,326,293,326,289,313,283,310,279,304,284,292,279,284,297,296,299,305,304,320,322,313,324,303,329,300" href="eastont.aspx" alt="Eastern Ontario">
+					<area shape="poly" coords="311,303,303,303,308,315,319,309,319,300,317,300" href="ottawa.aspx" alt="Ottawa">
+					<area shape="poly" coords="270,285,259,273,222,292,212,293,190,295,201,301,218,304,233,301,243,312,255,301,271,299,278,296,275,289" href="nortont.aspx" alt="Northern Ontario">
+					<area shape="poly" coords="235,281,233,270,222,273,219,280,221,289,229,284" href="sudbury.aspx" alt="Sudbury">
+					<area shape="poly" coords="7,127,8,206,18,224,55,238,90,243,89,229,114,217,130,225,153,243,167,257,172,281,194,292,212,289,216,271,233,266,239,277,256,271,251,258,253,158,239,160,210,122,210,92,210,69,164,65,130,46,120,34,106,28,15,121" href="nortont.aspx" alt="Northern Ontario">
+					<area shape="poly" coords="118,228,115,222,95,229,95,244,113,233" href="thundbay.aspx" alt="Thunder Bay">
+				</map>
+				<img src="regions/ont.gif" usemap="#OntMap0" alt="Map: Ontario's EI Economic Regions (See full description below image)" class="noborder"><br>A map of Ontario showing the EI regional boundaries and selected place names.
+            <ul class="list">
+               <li><img src="../images/ontco1.gif" alt="" height="13" width="12">
+               <a href="ottawa.aspx">22 Ottawa</a></li>
+               <li><img src="../images/ontco2.gif" alt="" height="13" width="12">
+               <a href="eastont.aspx">23 Eastern Ontario</a></li>
+               <li><img src="../images/ontco17.gif" alt="" height="13" width="12">
+               <a href="kingston.aspx">24 Kingston</a></li>
+               <li><img src="../images/ontco3.gif" alt="" height="13" width="12">
+               <a href="centont.aspx">25 Central Ontario</a></li>
+               <li><img src="../images/ontco4.gif" alt="" height="13" width="12">
+               <a href="oshawa.aspx">26 Oshawa</a></li>
+               <li><img src="../images/ontco5.gif" alt="" height="13" width="12">
+               <a href="toronto.aspx">27 Toronto</a></li>
+               <li><img src="../images/ontco6.gif" alt="" height="13" width="12">
+               <a href="hamilton.aspx">28 Hamilton</a></li>
+               <li><img src="../images/ontco7.gif" alt="" height="13" width="12">
+               <a href="stcath.aspx">29 St. Catharines</a></li>
+               <li><img src="../images/ontco8.gif" alt="" height="13" width="12">
+               <a href="london.aspx">30 London</a></li>
+               <li><img src="../images/ontco9.gif" alt="" height="13" width="12">
+               <a href="niagara.aspx">31 Niagara</a></li>
+               <li><img src="../images/ontco10.gif" alt="" height="13" width="12">
+               <a href="windsor.aspx">32 Windsor</a></li>
+               <li><img src="../images/ontco11.gif" alt="" height="13" width="12">
+               <a href="kitchen.aspx">33 Kitchener</a></li>
+               <li><img src="../images/ontco12.gif" alt="" height="13" width="12">
+               <a href="huron.aspx">34 Huron</a></li>
+               <li><img src="../images/ontco13.gif" alt="" height="13" width="12">
+               <a href="scentont.aspx">35 South Central Ontario</a></li>
+               <li><img src="../images/ontco14.gif" alt="" height="13" width="12">
+               <a href="sudbury.aspx">36 Sudbury</a></li>
+               <li><img src="../images/ontco15.gif" alt="f" height="13" width="12">
+               <a href="thundbay.aspx">37 Thunder Bay</a></li>
+               <li><img src="../images/ontco16.gif" alt="" height="13" width="12">
+               <a href="nortont.aspx">38 Northern Ontario</a></li>
+               <li><a href="#" onclick="hideRegion('ont'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- Ontario -->
+            
+            <div id="queb" class="provTerr" hidden>
+				<map name="QuebMap0" id="QuebMap0">
+					<area shape="poly" coords="164,368,160,370,165,374,159,384,150,381,149,383,155,391,163,388,168,384,169,381,169,379" href="cenqueb.aspx" alt="Central Quebec">
+					<area shape="poly" coords="130,326,119,327,121,344,131,345,135,360,135,375,129,380,121,385,124,392,130,390,130,385,145,382,146,369,156,368,160,367,159,358,165,355,172,359,175,358,165,346,148,346,137,335" href="cenqueb.aspx" alt="Central Quebec">
+					<area shape="poly" coords="175,402,186,386,178,383,174,377,179,371,177,368,169,374,172,382,168,388,174,396" href="qucesout.aspx" alt="South Central Quebec">
+					<area shape="poly" coords="130,406,154,403,154,394,146,385,146,389,150,396,146,399,136,398,133,393,128,394,129,400" href="montereg.aspx" alt="Montérégie">
+					<area shape="poly" coords="167,359,162,361,169,372,174,367,171,363" href="quebec.aspx" alt="Quebec">
+					<area shape="poly" coords="164,391,157,393,157,398,162,400,167,397,166,395" href="sherbro.aspx" alt="Sherbrooke">
+					<area shape="poly" coords="155,371,148,370,149,378,156,381,160,375,159,373" href="trrivier.aspx" alt="Trois-Rivières">
+					<area shape="poly" coords="142,388,135,387,136,394,144,398,146,394" href="montreal.aspx" alt="Montreal">
+					<area shape="poly" coords="119,398,118,387,110,387,109,396,114,396" href="hull.aspx" alt="Hull">
+					<area shape="poly" coords="201,359,213,345,208,329,195,340,185,335,183,340,169,344,179,357,177,363,182,368,178,377,183,381,197,363" href="basstlaur.aspx" alt="Lower Saint Lawrence &amp; North Shore">
+					<area shape="poly" coords="181,337,181,329,168,329,168,340" href="chicjonq.aspx" alt="Chicoutimi-Jonquière">
+					<area shape="poly" coords="229,244,223,225,219,213,263,210,264,201,187,201,186,252,166,269,150,289,133,311,134,325,148,341,164,342,163,327,181,327,191,335,214,314,237,295,238,260,232,252" href="basstlaur.aspx" alt="Lower Saint Lawrence &amp; North Shore">
+					<area shape="poly" coords="342,261,264,259,267,241,256,241,251,264,242,259,240,299,230,307,211,328,216,347,244,345,283,363,298,341,300,298,320,288,343,274,344,269" href="gaspe.aspx" alt="Gaspésie-Îles-de-la-Madeleine">
+					<area shape="poly" coords="95,46,82,51,86,80,81,126,98,138,105,167,96,193,66,205,73,229,78,254,69,271,68,358,79,379,92,383,101,393,107,395,105,383,114,384,131,372,127,349,118,348,115,322,130,321,128,311,150,283,170,260,181,249,184,199,265,199,263,171,263,122,250,88,215,133,197,113,193,72,170,71,154,48,139,45,118,49,104,46" href="quenwest.aspx" alt="North Western Quebec">
+				</map>
+				<img src="regions/queb.gif" usemap="#QuebMap0" alt="Map: Quebec's EI Economic Regions (See full description below image)" class="noborder"><br>
+            A map of Quebec showing the EI regional boundaries and selected place names including
+            Gaspé, Hull, Jonquière, Montréal, Québec, Rouyn-Noranda, Sherbrooke and Trois-Rivières.
+            <ul class="list">
+               <li><img src="../images/queco1.gif" alt="" height="13" width="12">
+                  <a href="gaspe.aspx">10 Gaspésie-Îles-de-la-Madeleine</a></li>
+               <li><img src="../images/queco2.gif" alt="" height="13" width="12">
+                  <a href="quebec.aspx">11 Quebec</a></li>
+               <li><img src="../images/queco3.gif" alt="" height="13" width="12">
+                  <a href="trrivier.aspx">12 Trois-Rivières</a></li>
+               <li><img src="../images/queco4.gif" alt="" height="13" width="12">
+                  <a href="qucesout.aspx">13 South Central Quebec</a></li>
+               <li><img src="../images/queco5.gif" alt="" height="13" width="12">
+                  <a href="sherbro.aspx">14 Sherbrooke</a></li>
+               <li><img src="../images/queco6.gif" alt="" height="13" width="12">
+                  <a href="montereg.aspx">15 Montérégie</a></li>
+               <li><img src="../images/queco7.gif" alt="" height="13" width="12">
+                  <a href="montreal.aspx">16 Montreal</a></li>
+               <li><img src="../images/queco8.gif" alt="" height="13" width="12">
+                  <a href="cenqueb.aspx">17 Central Quebec</a></li>
+               <li><img src="../images/queco10.gif" alt="" height="13" width="12">
+                  <a href="quenwest.aspx">18 North Western Quebec</a></li>
+               <li><img src="../images/queco9.gif" alt="" height="13" width="12">
+                  <a href="basstlaur.aspx">19 Lower Saint Lawrence &amp; North Shore</a></li>
+               <li><img src="../images/queco11.gif" alt="" height="13" width="12">
+                  <a href="hull.aspx">20 Hull</a></li>
+               <li><img src="../images/queco12.gif" alt="" height="13" width="12">
+                  <a href="chicjonq.aspx">21 Chicoutimi-Jonquière</a></li>
+               <li>
+                  <a href="#" onclick="hideRegion('queb'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- Quebec -->
+            
+            <div id="nb" class="provTerr" hidden>
+				<map name="NBMap0" id="NBMap0">
+					<area shape="poly" coords="26, 136, 38, 147, 68, 139, 77, 130, 111, 157, 111, 285, 128, 297, 128, 335, 143, 347, 159, 347, 172, 398, 184, 393, 181, 351, 186, 349, 185, 324, 194, 321, 196, 310, 161, 308, 157, 308, 168, 285, 161, 277, 166, 269, 139, 233, 177, 172, 161, 132, 72, 92, 74, 113, 57, 125, 41, 132" href="madchar.aspx" alt="Madawaska-Charlotte">
+					<area shape="poly" coords="200, 352, 230, 335, 288, 307, 283, 290, 300, 275, 315, 270, 316, 258, 321, 251, 312, 235, 292, 234, 297, 267, 282, 274, 271, 257, 220, 307, 204, 290, 211, 273, 205, 267, 226, 227, 221, 225, 181, 242, 165, 200, 145, 233, 172, 265, 165, 276, 174, 282, 162, 305, 197, 307, 200, 322, 190, 324, 189, 346, 196, 351" href="frmonstj.aspx" alt="Fredericton-Moncton-Saint John">
+					<area shape="poly" coords="71, 80, 71, 87, 165, 129, 184, 171, 168, 195, 182, 235, 221, 219, 233, 221, 210, 266, 216, 270, 208, 287, 221, 301, 269, 249, 283, 269, 293, 264, 284, 231, 311, 230, 328, 249, 321, 255, 321, 273, 304, 277, 289, 291, 292, 306, 347, 274, 377, 247, 372, 241, 329, 233, 314, 190, 306, 178, 309, 151, 301, 139, 323, 96, 336, 67, 325, 62, 304, 84, 290, 81, 257, 99, 246, 74, 203, 60, 162, 70, 140, 79, 129, 73, 127, 64, 88, 66, 90, 72, 75, 73" href="restalb.aspx" alt="Restigouche-Albert">
+				</map>
+				<img src="regions/nb.gif" usemap="#NBMap0" alt="Map: EI Economic Regions of New Brunswick (See full description below image)" class="noborder"><br>
+            A map of New Brunswick showing the EI regional boundaries and selected place names including
+            Bathurst, Campbellton, Dalhousie, Edmunston, Fredericton, Grand Falls, Miramichi, Moncton, 
+            Richibucto, Saint John, Shediac, St. Stephen, Sussex, Tracadie-Sheila and Woodstock.
+            <ul class="list">
+               <li><img src="../images/nbco1.gif" alt="" height="13" width="12">
+                  <a href="frmonstj.aspx">07 Fredericton-Moncton-Saint John</a></li>
+               <li><img src="../images/nbco3.gif" alt="" height="13" width="12">
+                  <a href="madchar.aspx">08 Madawaska-Charlotte</a></li>
+               <li><img src="../images/nbco2.gif" alt="" height="13" width="12">
+                  <a href="restalb.aspx">09 Restigouche-Albert</a></li>
+               <li>
+                  <a href="#" onclick="hideRegion('nb'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- New Brunswick -->
+            
+            <div id="pei" class="provTerr" hidden>
+            <img src="regions/pei.gif" alt="Map: EI Economic Region of Prince Edward Island (See full description below image)" class="noborder">		
+            <br>
+            A map of Prince Edward Island showing the EI Regional boundary and 1996 Census Divisions
+            including Kings County, Prince County and Queens County.
+    				
+            Economic Regions:
+            <ul class="list">
+               <li>
+               Province / Territory Prince Edward Island
+               </li>
+               <li>
+                  <a href="#" onclick="hideRegion('pei'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- PEI -->
+            
+            <div id="ns" class="provTerr" hidden>
+				<map name="NSMap0" id="NSMap0">
+					<area href="eastns.aspx" coords="409, 38, 376, 57, 320, 142, 322, 173, 306, 178, 298, 154, 279, 168, 288, 206, 251, 216, 217, 235, 210, 245, 226, 270, 274, 248, 358, 214, 347, 195, 399, 182, 442, 146, 409, 122, 395, 102, 400, 63, 399, 56, 404, 50" shape="poly" alt="Eastern Nova Scotia">
+					<area href="eastns.aspx" coords="440, 327, 424, 331, 406, 326, 406, 338, 428, 339, 437, 334" shape="poly" alt="Eastern Nova Scotia">
+					<area href="halifax.aspx" coords="176, 291, 196, 289, 217, 269, 204, 244, 210, 236, 201, 236, 193, 246, 184, 241, 174, 256, 152, 260, 163, 278, 173, 287" shape="poly" alt="Halifax">
+					<area href="nswest.aspx" coords="223, 165, 180, 155, 162, 144, 113, 191, 93, 214, 81, 243, 10, 295, 7, 313, 32, 386, 68, 388, 125, 329, 164, 288, 144, 259, 172, 253, 184, 234, 192, 241, 201, 231, 215, 230, 252, 210, 284, 204, 275, 171, 256, 171, 233, 165" shape="poly" alt="Western Nova Scotia">
+				</map>
+				<img src="regions/ns.gif" usemap="NSMap0" alt="Map: EI Economic Regions of Nova Scotia (See full description below image)" class="noborder"><br>
+            A map of Nova Scotia showing the EI regional boundaries and selected place names including
+            Antigonish, Bridgewater, Digby, Guysborough, Halifax, New Glasgow, Port Hawkesbury, Windsor and Yarmouth.
+            <ul class="list">
+               <li><img src="../images/nsco1.gif" alt="" height="13" width="12">
+                  <a href="eastns.aspx">04 Eastern Nova Scotia</a></li>
+               <li><img src="../images/nsco5.gif" alt="" height="13" width="12">
+                  <a href="nswest.aspx">05 Western Nova Scotia</a></li>
+               <li><img src="../images/nsco3.gif" alt="" height="13" width="12">
+                  <a href="halifax.aspx">06 Halifax</a></li>
+               <li>
+                  <a href="#" onclick="hideRegion('ns'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- Nova Scotia -->
+            
+            <div id="nfld" class="provTerr" hidden>
+     			<map name="NFLDMap0" id="NFLDMap0">
+					<area shape="poly" coords="309,376,305,375,300,386,306,391,308,384" href="stjohns.aspx" alt="St. John's">
+					<area shape="poly" coords="122,38,110,42,115,84,123,123,121,158,128,188,80,171,67,190,62,214,80,252,117,277,133,266,236,265,233,299,201,358,200,383,244,387,255,402,288,405,303,406,307,395,295,387,301,369,300,352,290,322,256,310,275,272,263,243,258,216,218,180,178,152,166,101,129,49" href="nfldlab.aspx" alt="Newfoundland / Labrador">
+				</map>
+				<img src="regions/nfld.gif" usemap="#FrontPageMap0" alt="Map: EI Economic Regions of Newfoundland and Labrador (See full description below image)" class="noborder"><br>
+            A map of Newfoundland and Labrador showing the EI regional boundaries and selected place names including
+            Burgeo, Corner Brook, Happy Valley-Goose Bay, Springdale, St. Anthony and St. John's.
+            <ul class="list">
+               <li><img src="../images/nfldco1.gif" alt="" height="13" width="12">
+                  <a href="stjohns.aspx">01 St. John's</a></li>
+               <li><img src="../images/nfldco2.gif" alt="" height="13" width="12">
+                  <a href="nfldlab.aspx">02 Newfoundland / Labrador</a></li>
+               <li>
+                  <a href="#" onclick="hideRegion('nfld'); return false;">Canada</a></li>
+            </ul>
+            </div>   <!-- Newfoundland and Labrador -->
+
+         <div id="results" hidden>
+         </div>
+			</div>
+			<!-- End content -->
+		</div></div>      
+	    <!-- End page containers -->
+<!--       <script type="text/javascript">
+         $('#yukon'.hide());
+       </script> -->
+	</body>
+</html>
