@@ -1,4 +1,4 @@
-This software was written for the Canadian Open Data Experience hackathon
+This software was written by Mark Jenkins and Sara Arenson for the Canadian Open Data Experience hackathon
 https://canadianopendataexperience.com/
 
 Premise: You are working as a temp or have otherwise insecure unemployement. For the sake of your prayers you ask, "How much longer do I have to work until I have the security of EI elegibility?"
@@ -20,15 +20,49 @@ which I have copy-pasted to unemployement_rates_feb9_march8_2014.csv
 
 The initial versions of this application will be based on that. Time permitting, I may also add a time-travel feature so that the data from data.gc.ca can have a purpose.
 
+You can see a copy of this up and running at:
+http://
+
 -----------
 So, how do you use this?
-You need to download and install Django 1.7 (which is currently in alpha stage)
-
+You need Django 1.7 (which is currently in alpha stage)
 https://www.djangoproject.com/download/
+and Python 2.7
+http://python.org/downloads/
+
+You can read all about how to install Django and use Django sites and apps 
+through the docs
+https://docs.djangoproject.com/en/dev/
+
+The there are three top level directories:
+ * /html HTML and gif files statically served up
+ * /whenei -- a django app for EI data
+ * /wheneisite -- a django site for all of this
+
+You need both the top level and /wheneisite sub directories to be in your PYTHON_PATH so that both the whenwi and wheneisite/wheneisite packages can be imported
+
+```
+import whenei
+import wheneisite
+```
 
 Install it somewhere that's in your default sys.path or set PYTHON_PATH to include it and this source code directory.
 
-Also have the django-admin from this available in PATH
+load the database]
+
+$ cd wheneisite
+$ ./manage.py syncdb
+
+load the CSV file
+
+$ cd wheneisite
+ DJANGO_SETTINGS_MODULE=wheneisite.settings python ../load_unemployement_rates.py unemployement_rates_feb9_march8_2014.csv 2014-2-9 2014-3-8
+
+---------
+
+It's possible to skip the web parts of this and just run this as a command
+line application. For this, its useful to have to have the django-admin program
+available in PATH . You also don't need /wheneisite in your PYTHON_PATH
 
 Customize sqlite_test_settings.py to your likeing and put DJANGO_SETTINGS_MODULE=sqlite_test_settings in your environment.
 
