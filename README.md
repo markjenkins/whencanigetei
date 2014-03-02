@@ -56,7 +56,10 @@ $ ./manage.py syncdb
 load the CSV file
 
 $ cd wheneisite
- DJANGO_SETTINGS_MODULE=wheneisite.settings python ../load_unemployement_rates.py unemployement_rates_feb9_march8_2014.csv 2014-2-9 2014-3-8
+DJANGO_SETTINGS_MODULE=wheneisite.settings python ../load_unemployement_rates.py unemployement_rates_feb9_march8_2014.csv 2014-2-9 2014-3-8
+
+load some old rates
+DJANGO_SETTINGS_MODULE=wheneisite.settings python ../load_old_unemployment_rates.py ../old_unemp_rates/20121207-01-unemploymtrate-eng.csv
 
 ---------
 
