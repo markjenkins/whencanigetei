@@ -55,9 +55,16 @@ jquery http://jquery.org its own terms http://jquery.org/license
       { 'regionCode': regionCode, 'hoursWorked': hoursWorked },
       function(json) {
            $("#results").html(
-               "<p>In " + json.regionName +
-               ", you have to work " + json.hours + " hours. " +
-               json.hoursToGo + " hours to go</p>"
+               "<p>" +
+               "The unemployment rate is " + json.unemp_rate + "% " +
+               "in " + json.regionName + "." +
+               "</p>" +
+               
+               "<p>" + 
+               "You have to work " + 
+               json.hours + " hours. " +
+               json.hoursToGo + " hours to go." +
+               "</p>"
            );
            $("#results").show();
        }
