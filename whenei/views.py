@@ -35,7 +35,7 @@ def handle_request(request):
                 'unemp_rate': str(rate_place.unemployment_rate),
                 'hoursToGo': str(hours_remaining),
                 }),
-        content_type="application/json")
+        content_type="application/json; charset=utf-8")
     # we're cross site y'all, don't care 'bout that origin
     # https://developer.mozilla.org/en/docs/HTTP/Access_control_CORS
     response['Access-Control-Allow-Origin'] = '*'

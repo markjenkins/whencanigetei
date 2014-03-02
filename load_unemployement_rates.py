@@ -40,6 +40,9 @@ def strip_suffix_if_present(place_name, suffix_to_strip):
             else place_name[:-len(suffix_to_strip)]
             ) # end ternary expression
 
+def iso8859_1_to_utf8(msg):
+    return msg.decode('iso-8859-1').encode('utf8')
+
 def main():
     start_date, end_date = \
         convert_date_string(argv[2]), convert_date_string(argv[3])
@@ -67,8 +70,8 @@ def main():
                 code=d['economic_region_code'],
                 province=PROVINCES_AND_TERITORIES_NAME_TO_ABREV[
                     d['province'] ],
-                name=strip_suffix_if_present(
-                            d['economic_region_name'], " (map)"),
+                name=iso8859_1_to_utf8(strip_suffix_if_present(
+                            d['economic_region_name'], " (map)")),
                 ) # EI_Economic_Place
             for d in csv_data_points
             )
